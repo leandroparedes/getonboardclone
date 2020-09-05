@@ -1,0 +1,78 @@
+version: '3'
+
+networks:
+    getonboard:
+
+volumes:
+    getonboard_pgdata:
+
+services:
+    nginx:
+        build:
+            context: ./nginx
+        container_name: getonboard_nginx
+        ports:
+            - "5010:80"
+        volumes:
+            - ./src:/var/www/html
+            - ./nginx/default.conf:/etc/nginx/conf.d/default.conf
+        depends_on:
+            - php
+            - postgres
+        networks:
+            - getonboard
+    php:
+        build:
+            context: ./php
+        container_name: getonboard_php
+        ports:
+            - "9010:9000"
+        volumes:
+            - ./src:/var/www/html
+        networks:
+            - getonboard
+
+    postgres:
+        build:
+            context: ./postgres
+        container_name: getonboard_postgres
+        ports:
+            - "1234:5432"
+        volumes:
+            - getonboard_pgdata:/var/lib/postgresql/data
+        environment:
+            POSTGRES_DB: getonboard
+            POSTGRES_USER: root
+            POSTGRES_PASSWORD: root
+        networks:
+            - getonboard
+
+    artisan:
+        build:
+            context: ./php
+        container_name: getonboard_artisan
+        volumes:
+            - ./src:/var/www/html
+        depends_on:
+            - postgres
+        working_dir: /var/www/html
+        entrypoint: ['php', '/var/www/html/artisan']
+        networks:
+            - getonboard
+
+    composer:
+        image: composer:latest
+        volumes:
+            - ./src:/var/www/html
+        working_dir: /var/www/html
+        depends_on:
+            - php
+        networks:
+            - getonboard
+
+    npm:
+        image: node:latest
+        volumes:
+            - ./src:/var/www/html
+        working_dir: /var/www/html
+        entrypoint: ['npm']
