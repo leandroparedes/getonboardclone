@@ -19,7 +19,7 @@
         </select>
         <input type="text" name="name" id="id-name" placeholder="name" required>
         <input type="email" name="email" id="id-email" placeholder="email" required>
-        <input type="password" name="password" id="id-password">
+        <input type="password" name="password" id="id-password" placeholder="password">
         <input type="submit" value="Register">
     </form>
 
