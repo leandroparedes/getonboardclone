@@ -22,4 +22,6 @@
         <input type="password" name="password" id="id-password">
         <input type="submit" value="Register">
     </form>
+
+    <a href="{{ route('login') }}">Login</a>
 @endsection
