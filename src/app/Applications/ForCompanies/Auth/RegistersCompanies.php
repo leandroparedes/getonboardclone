@@ -68,14 +68,4 @@ trait RegistersCompanies
             'password' => Hash::make($data['password']),
         ]);
     }
-
-    /**
-     * Get the guard to be used during registration.
-     *
-     * @return \Illuminate\Contracts\Auth\StatefulGuard
-     */
-    protected function guard()
-    {
-        return Auth::guard('company');
-    }
 }
