@@ -4,11 +4,11 @@
  * Authentication routes
  */
 Route::group(['prefix' => 'login'], function () {
-    Route::get('', 'AuthController@showLoginForm');
-    Route::post('', 'AuthController@login');
+    Route::get('', 'AuthController@showLoginForm')->name('companies.showLoginForm');
+    Route::post('', 'AuthController@login')->name('companies.login');
 });
 
 Route::group(['prefix' => 'register'], function () {
-    Route::get('', 'AuthController@showRegisterForm');
-    Route::post('', 'AuthController@register');
+    Route::get('', 'AuthController@showRegisterForm')->name('companies.showRegisterForm');
+    Route::post('', 'AuthController@register')->name('companies.register');
 });
