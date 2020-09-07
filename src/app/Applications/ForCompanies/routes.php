@@ -12,3 +12,5 @@ Route::group(['prefix' => 'register'], function () {
     Route::get('', 'AuthController@showRegisterForm')->name('companies.showRegisterForm');
     Route::post('', 'AuthController@register')->name('companies.register');
 });
+
+Route::post('/logout', 'AuthController@logout')->name('companies.logout');
