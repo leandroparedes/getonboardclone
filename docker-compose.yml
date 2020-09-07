@@ -27,6 +27,7 @@ services:
         container_name: getonboard_php
         ports:
             - "9010:9000"
+        user: 1000:1000
         volumes:
             - ./src:/var/www/html
         networks:
@@ -55,6 +56,7 @@ services:
             - ./src:/var/www/html
         depends_on:
             - postgres
+        user: 1000:1000
         working_dir: /var/www/html
         entrypoint: ['php', '/var/www/html/artisan']
         networks:
@@ -67,6 +69,7 @@ services:
         working_dir: /var/www/html
         depends_on:
             - php
+        user: 1000:1000
         networks:
             - getonboard
 
@@ -74,5 +77,6 @@ services:
         image: node:latest
         volumes:
             - ./src:/var/www/html
+        user: 1000:1000
         working_dir: /var/www/html
         entrypoint: ['npm']
