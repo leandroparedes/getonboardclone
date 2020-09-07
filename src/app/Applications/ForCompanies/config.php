@@ -1,3 +1,8 @@
 <?php
 
-return [];
+return [
+    'auth' => [
+        'failedRedirectPath' => '/companies/login',
+        'successRedirectPath' => '/companies/home'
+    ]
+];
