@@ -6,9 +6,7 @@ use App\Applications\Countries;
 use App\Applications\ForCompanies\Models\Company;
 use App\Rules\CountryCode;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
-use Illuminate\Support\Facades\Validator;
 
 trait RegistersCompanies
 {
@@ -23,7 +21,7 @@ trait RegistersCompanies
 
     protected function register(Request $request)
     {
-        $this->validator($request->all())->validate();
+        $this->validateRegister($request);
 
         $company = $this->create($request->all());
 
@@ -37,15 +35,9 @@ trait RegistersCompanies
         //
     }
 
-    /**
-     * Get a validator for an incoming registration request.
-     *
-     * @param  array  $data
-     * @return \Illuminate\Contracts\Validation\Validator
-     */
-    protected function validator(array $data)
+    protected function validateRegister(Request $request)
     {
-        return Validator::make($data, [
+        $request->validate([
             'name' => ['required', 'string', 'max:255'],
             'country_code' => ['required', 'string', 'size:3', new CountryCode],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:companies'],
