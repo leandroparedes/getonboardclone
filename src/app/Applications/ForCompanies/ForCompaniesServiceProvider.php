@@ -22,7 +22,8 @@ class ForCompaniesServiceProvider extends ServiceProvider
     {
         Route::group([
             'namespace' => 'App\Applications\ForCompanies\Controllers',
-            'prefix' => 'companies'
+            'prefix' => 'companies',
+            'middleware' => 'web'
         ], function () {
             $this->loadRoutesFrom(__DIR__.'/routes.php');
         });
