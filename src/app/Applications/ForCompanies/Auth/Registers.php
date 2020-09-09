@@ -8,9 +8,9 @@ use App\Rules\CountryCode;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 
-trait RegistersCompanies
+trait Registers
 {
-    use RedirectsCompanies;
+    use Redirects;
 
     protected function showRegisterForm(Request $request)
     {

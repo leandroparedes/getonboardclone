@@ -2,7 +2,7 @@
 
 namespace App\Applications\ForCompanies\Auth;
 
-trait RedirectsCompanies
+trait Redirects
 {
     /**
      * Get the post register | login redirect path.

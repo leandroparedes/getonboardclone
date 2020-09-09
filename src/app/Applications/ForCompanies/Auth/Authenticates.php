@@ -5,9 +5,9 @@ namespace App\Applications\ForCompanies\Auth;
 use Illuminate\Http\Request;
 use Illuminate\Validation\ValidationException;
 
-trait AuthenticatesCompanies
+trait Authenticates
 {
-    use RedirectsCompanies;
+    use Redirects;
 
     protected function showLoginForm(Request $request)
     {
