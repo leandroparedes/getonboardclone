@@ -10,4 +10,6 @@
     <form id="logout-form" action="{{ route('companies.logout') }}" method="POST" style="display: none;">
         @csrf
     </form>
+
+    <example-component></example-component>
 @endsection
