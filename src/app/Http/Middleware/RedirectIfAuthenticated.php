@@ -19,7 +19,11 @@ class RedirectIfAuthenticated
     public function handle($request, Closure $next, $guard = null)
     {
         if (Auth::guard($guard)->check()) {
-            return redirect(RouteServiceProvider::HOME);
+            switch ($guard) {
+                case 'company': return redirect(config('companies.auth.successRedirectPath'));
+                case 'professional': return redirect(config('professionals.auth.successRedirectPath'));
+                default: return redirect(RouteServiceProvider::HOME);
+            }
         }
 
         return $next($request);
