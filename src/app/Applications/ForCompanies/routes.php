@@ -14,3 +14,10 @@ Route::group(['prefix' => 'register'], function () {
 });
 
 Route::post('/logout', 'AuthController@logout')->name('companies.logout');
+
+/**
+ * Application routes
+ */
+Route::group(['middleware' => 'auth:company'], function () {
+    Route::view('/home', 'companies::home')->name('companies.home');
+});
