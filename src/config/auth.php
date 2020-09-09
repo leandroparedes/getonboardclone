@@ -50,6 +50,11 @@ return [
         'company' => [
             'driver' => 'session',
             'provider' => 'companies'
+        ],
+
+        'professional' => [
+            'driver' => 'session',
+            'provider' => 'professionals'
         ]
     ],
 
@@ -79,6 +84,11 @@ return [
         'companies' => [
             'driver' => 'eloquent',
             'model' => App\Applications\ForCompanies\Models\Company::class
+        ],
+
+        'professionals' => [
+            'driver' => 'eloquent',
+            'model' => App\Applications\ForProfessionals\Models\Professional::class
         ]
 
         // 'users' => [
