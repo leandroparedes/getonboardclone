@@ -1,12 +1,8 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
-</head>
-<body>
+@extends('professionals::layouts.main')
+
+@section('title', 'Register as professional')
+
+@section('content')
     <h1>Professional register</h1>
 
     @if ($errors->any())
@@ -31,5 +27,4 @@
         <input type="password" name="password_confirmation" id="id-password-confirmation" placeholder="password confirmation">
         <input type="submit" value="Register professional">
     </form>
-</body>
-</html>
+@endsection
