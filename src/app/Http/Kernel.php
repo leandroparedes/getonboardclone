@@ -65,8 +65,11 @@ class Kernel extends HttpKernel
         'verified' => \Illuminate\Auth\Middleware\EnsureEmailIsVerified::class,
 
         /**
-         * Application route middleware
+         * Company application route middleware
          */
-        'auth.companies' => \App\Applications\ForCompanies\Middleware\Authenticate::class
+
+         /**
+         * Professional application route middleware
+         */
     ];
 }
