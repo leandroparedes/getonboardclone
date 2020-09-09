@@ -11,6 +11,12 @@ class AuthController extends Controller
 {
     use AuthenticatesCompanies, RegistersCompanies;
 
+    public function __construct()
+    {
+        $this->middleware('guest:company')->except('logout');
+        $this->middleware('guest:professional')->except('logout');
+    }
+
     /**
      * Get the guard to be used during registration.
      *
