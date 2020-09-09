@@ -40,7 +40,7 @@ trait RegistersCompanies
         $request->validate([
             'name' => ['required', 'string', 'max:255'],
             'country_code' => ['required', 'string', 'size:3', new CountryCode],
-            'email' => ['required', 'string', 'email', 'max:255', 'unique:companies'],
+            'email' => ['required', 'string', 'email', 'max:255', 'unique:companies', 'unique:professionals'],
             'password' => ['required', 'string', 'min:8', 'max:255', 'confirmed']
         ]);
     }
