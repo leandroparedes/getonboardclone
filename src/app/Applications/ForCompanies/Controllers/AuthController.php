@@ -2,14 +2,14 @@
 
 namespace App\Applications\ForCompanies\Controllers;
 
-use App\Applications\ForCompanies\Auth\AuthenticatesCompanies;
-use App\Applications\ForCompanies\Auth\RegistersCompanies;
+use App\Applications\ForCompanies\Auth\Authenticates;
+use App\Applications\ForCompanies\Auth\Registers;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 
 class AuthController extends Controller
 {
-    use AuthenticatesCompanies, RegistersCompanies;
+    use Authenticates, Registers;
 
     public function __construct()
     {
