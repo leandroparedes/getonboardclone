@@ -9,8 +9,7 @@ class Search
     use InteractsWithFilters;
 
     /**
-     * The model that we are going to use as base
-     * for the search
+     * The Eloquent Model instance
      * 
      * @var \Illuminate\Database\Eloquent\Model
      */
