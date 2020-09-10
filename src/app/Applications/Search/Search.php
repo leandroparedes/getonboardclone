@@ -2,9 +2,7 @@
 
 namespace App\Applications\Search;
 
-use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Http\Request;
 
 class Search
 {
@@ -19,18 +17,11 @@ class Search
     protected $model;
 
     /**
-     * Request that contains the filters to be applied
+     * The raw query string that contains the filters
      * 
-     * @var \Illuminate\Http\Request;
+     * @var array;
      */
-    protected $request;
-
-    /**
-     * Array of valid filters to be applied
-     * 
-     * @var array
-     */
-    protected $filters;
+    protected $queryString;
 
     /**
      * The QueryBuilder instance
@@ -57,36 +48,14 @@ class Search
     /**
      * Establish the source of the filters
      * 
-     * @param \Illuminate\Http\Request
+     * @param array $queryString
      * @return Search
      */
-    public function from(Request $request)
+    public function from(array $queryString)
     {
-        $this->request = $request;
+        $this->queryString = $queryString;
 
         return $this;
-    }
-
-    /**
-     * Set a custom QueryBuilder.
-     * 
-     * @param \Illuminate\Database\Eloquent\Builder
-     */
-    public function query(Builder $builder)
-    {
-        $this->queryBuilder = $builder;
-        
-        return $this;
-    }
-
-    /**
-     * Return the QueryBuilder instance
-     * 
-     * @return \Illuminate\Database\Eloquent\Builder
-     */
-    public function getQueryBuilder()
-    {
-        return $this->queryBuilder;
     }
 
     /**
