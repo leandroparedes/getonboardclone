@@ -27,8 +27,7 @@ class JobOffer extends Model implements SearchableInterface
     }
 
     /**
-     * Append a random string to the slug for ensure
-     * uniqueness
+     * Append a random string to the slug for ensure uniqueness
      */
     public function setSlugAttribute($value)
     {
@@ -38,9 +37,10 @@ class JobOffer extends Model implements SearchableInterface
     // SearchableInterface methods implementation
 
     /**
-     * List of filters availables for search and filtering
-     * Format:
-     *  key => dataType
+     * List of filters availables for search and filtering in
+     * format column => dataType
+     * 
+     * @return array
      */
     public function availableFilters()
     {
@@ -52,7 +52,7 @@ class JobOffer extends Model implements SearchableInterface
     }
 
     /**
-     * The query builder used for searching
+     * The query builder used for search and filtering
      * 
      * @return \Illuminate\Database\Eloquent\Builder
      */
