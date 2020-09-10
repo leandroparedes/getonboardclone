@@ -11,7 +11,7 @@ class JobOffer extends Model
 
     /**
      * Get the slug without the last portion of the string,
-     * which is a random string provided for uniquess.
+     * which is a random string provided for uniqueness.
      */
     public function getSafeSlugAttribute()
     {
