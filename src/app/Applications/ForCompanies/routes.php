@@ -21,3 +21,11 @@ Route::post('/logout', 'AuthController@logout')->name('companies.logout');
 Route::group(['middleware' => 'auth:company'], function () {
     Route::view('/home', 'companies::home')->name('companies.home');
 });
+
+Route::group(['prefix' => 'jobs'], function () {
+    Route::get('create', 'JobOfferController@showCreateForm')->name('companies.jobs.showCreateForm');
+    Route::post('', 'JobOfferController@store')->name('companies.jobs.store');
+    
+    Route::get('{job_offer:slug}/edit', 'JobOfferController@showUpdateForm')->name('companies.jobs.updateCreateForm');
+    Route::put('{job_offer:slug}', 'JobOfferController@update')->name('companies.jobs.update');
+});
