@@ -174,6 +174,8 @@ return [
         // App\Providers\BroadcastServiceProvider::class,
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
+
+        App\Providers\SearchServiceProvider::class,
         
         App\Applications\ForCompanies\ForCompaniesServiceProvider::class,
         App\Applications\ForProfessionals\ForProfessionalsServiceProvider::class
@@ -229,6 +231,7 @@ return [
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
 
+        'Search' => \App\Applications\Search\SearchFacade::class
     ],
 
 ];

@@ -2,10 +2,11 @@
 
 namespace App\Applications\ForCompanies\Models;
 
+use App\Applications\Search\Interfaces\SearchableInterface;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Str;
 
-class JobOffer extends Model
+class JobOffer extends Model implements SearchableInterface
 {   
     protected $guarded = [];
 
@@ -15,6 +16,7 @@ class JobOffer extends Model
      */
     public function getSafeSlugAttribute()
     {
+        // mover esto a algo mas generico
         $splitted = explode('-', $this->slug);
 
         if (count($splitted) === 1) return $this->slug;
@@ -31,5 +33,31 @@ class JobOffer extends Model
     public function setSlugAttribute($value)
     {
         $this->attributes['slug'] = $value . '-' . Str::random();
+    }
+
+    // SearchableInterface methods implementation
+
+    /**
+     * List of filters availables for search and filtering
+     * Format:
+     *  key => dataType
+     */
+    public function availableFilters()
+    {
+        return [
+            'title' => 'string',
+            'description' => 'string',
+            'created_at' => 'date'
+        ];
+    }
+
+    /**
+     * The query builder used for searching
+     * 
+     * @return \Illuminate\Database\Eloquent\Builder
+     */
+    public function searchableQueryBuilder()
+    {
+        return $this->query();
     }
 }
