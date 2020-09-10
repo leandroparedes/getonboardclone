@@ -64,8 +64,6 @@ class Search
     {
         $this->request = $request;
 
-        $this->applyFilters(); // where to put this
-
         return $this;
     }
 
@@ -98,6 +96,8 @@ class Search
      */
     public function __call($name, $arguments)
     {
+        $this->applyFilters();
+        
         return $this->queryBuilder->$name(...$arguments);
     }
 }
