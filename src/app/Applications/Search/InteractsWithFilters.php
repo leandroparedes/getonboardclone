@@ -7,17 +7,17 @@ trait InteractsWithFilters
     use ApplyBasicFilters;
 
     /**
-     * Compares the filters with a whitelist and leave the matches
+     * Parses the filters from the raw query string
+     * 
+     * @return array
      */
     protected function parseFilters()
     {
-        $originalFilters = $this->request->query();
-
         $whitelist = $this->model->availableFilters();
 
         $filters = [];
 
-        foreach ($originalFilters as $column => $value) {
+        foreach ($this->queryString as $column => $value) {
             if (array_key_exists($column, $whitelist)) {
                 array_push($filters, [
                     'column' => $column,
@@ -27,14 +27,14 @@ trait InteractsWithFilters
             }
         }
 
-        $this->filters = $filters;
+        return $filters;
     }
 
     protected function applyFilters()
     {
-        $this->parseFilters();
+        $filters = $this->parseFilters();
 
-        foreach ($this->filters as $filter) {
+        foreach ($filters as $filter) {
             $method = 'apply'.ucwords($filter['type']).'Filter';
 
             if (method_exists($this, $method)) {
