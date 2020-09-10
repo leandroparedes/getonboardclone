@@ -46,8 +46,8 @@ class JobOffer extends Model implements SearchableInterface
     {
         return [
             'title' => 'string',
-            'description' => 'string',
-            'created_at' => 'date'
+            //'description' => 'string',
+            //'created_at' => 'date'
         ];
     }
 
