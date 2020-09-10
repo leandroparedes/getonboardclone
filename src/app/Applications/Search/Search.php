@@ -82,13 +82,22 @@ class Search
     }
 
     /**
-     * todo: move this to RetrievesData trait or something
-     * Get the resulting collection
+     * Return the QueryBuilder instance
+     * 
+     * @return \Illuminate\Database\Eloquent\Builder
+     */
+    public function getQueryBuilder()
+    {
+        return $this->queryBuilder;
+    }
+
+    /**
+     * Call any QueryBuilder available method.
      * 
      * @return $mixed
      */
-    public function get()
+    public function __call($name, $arguments)
     {
-        return $this->queryBuilder->get();
+        return $this->queryBuilder->$name(...$arguments);
     }
 }
