@@ -13,4 +13,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::view('/', 'welcome')->name('homepage');
+Route::view('/', 'welcome')->middleware([
+    'guest:company',
+    'guest:professional'
+])->name('homepage');
